@@ -8,9 +8,12 @@ module.exports = {
   findById
 };
 
-//returns array with id
+//returns array with a record that has as id
 async function insert(hobbit) {
-  return db("hobbits").insert(hobbit);
+  const [id] = await db("hobbits").insert(hobbit);
+  return db("hobbits")
+    .where({ id })
+    .first();
 }
 
 async function update(id, changes) {
@@ -20,6 +23,7 @@ async function update(id, changes) {
 function remove(id) {
   return null;
 }
+//test remove method: insert a record, check that its there, call delete, check that record is no longer there
 
 function getAll() {
   return db("hobbits");
