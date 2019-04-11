@@ -58,6 +58,7 @@ describe("server.js", () => {
         .get("/")
         .then(res => {
           //   expect(res.body).toBe({ api: "up" }); -- false bc diff objects
+          //   expect(res.body.api).toBe('up');
           expect(res.body).toEqual({ api: "up" });
         });
     });
